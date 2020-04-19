@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Weather.MainPage">
+
+    <StackLayout>
+        <Label
+			x:Name="testLabel"
+            FontSize="40"
+			Text="Weather Forecast" 
+			HorizontalOptions="Center"
+			VerticalOptions="Start"
+			Margin="0,60,0,0"/>
+
+    <StackLayout Orientation="Horizontal" Padding="20,0">
+        <Entry
+            x:Name="CityName"
+			HorizontalOptions="FillAndExpand"
+			Placeholder="Enter city name"
+			/>
+        <Button
+			Text="GO"
+			BorderColor="#888888"
+			BorderWidth="1"
+			BackgroundColor="white"
+			Padding="20,0"
+			Clicked="OnClickGoButton"
+			/>
+    </StackLayout>
+
+    <Image
+		   x:Name="Condition"
+		   Source="cloudy.png"
+		   Scale="0.8"/>
+    <Label 
+		   x:Name="Temperature"
+		   Text="+23"
+		   FontSize="80"
+		   Margin="0,-40,0,0"
+		   HorizontalOptions="Center"
+		   />
+	</StackLayout>
+</ContentPage>
