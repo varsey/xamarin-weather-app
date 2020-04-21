@@ -43,40 +43,41 @@ namespace Weather
             var Request = new RestRequest("http://api.weatherstack.com/current?access_key=0f937552c1610e59df988defa5535e9e&query=" + City);
 
             RC.ExecuteAsyncGet(Request, (IRestResponse response, RestRequestAsyncHandle arg2) =>
-             {
-                 var Data = JsonConvert.DeserializeObject<WeatherData>(response.Content);
-                 String ConditionFile;
+            {
+                var Data = JsonConvert.DeserializeObject<WeatherData>(response.Content);
+                String ConditionFile;
 
-                 switch(Data.current.weather_code)
-                 {
-                     case "113":
-                     case "116":
-                         ConditionFile = "sunny.png";
-                         break;
-                     case "119":
-                         ConditionFile = "cloudy.png";
-                         break;
-                     default:
-                         ConditionFile = "clouds.png";
-                         break;
-                 }
+                //var icon = Data.current.weather_icons.text;
 
-                 var Temp = (int)Data.current.temperature;
-                 var TempText = Temp.ToString();
-                 if (Temp > 0)
-                 {
-                     TempText = "+" + Temp.ToString();
-                 }
+                switch (Data.current.weather_code)
+                {
+                    case "113":
+                        ConditionFile = "sunny.png";
+                        break;
+                    case "119":
+                        ConditionFile = "cloudy.png";
+                        break;
+                    default:
+                        ConditionFile = "clouds.png";
+                        break;
+                }
 
-                 MainThread.BeginInvokeOnMainThread(() =>
-                 {
-                     Condition.Source = ConditionFile;
-                     Temperature.Text = TempText;
-                     CityName.Text = "";
-                     CityName.IsEnabled = true;
-                 });
-             }, "GET");
-            
+                var Temp = (int)Data.current.temperature;
+                var TempText = Temp.ToString();
+                if (Temp > 0)
+                {
+                    TempText = "+" + Temp.ToString();
+                }
+
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    Condition.Source = ConditionFile;
+                    Temperature.Text = TempText;
+                    CityName.Text = "";
+                    CityName.IsEnabled = true;
+                });
+            }, "GET");
+
             CityName.Text = "Загрузка..."; //код ассинхр, поэтому эта часть выполниться раньше чем запрос на сервер
             CityName.IsEnabled = false;
         }
