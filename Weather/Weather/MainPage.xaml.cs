@@ -23,6 +23,8 @@ namespace Weather
         {
             public double temperature { get; set; }
             public string weather_code { get; set; }
+            public List<string> weather_icons { get; set; }
+            public List<string> weather_descriptions { get; set; }
             public Condition condition { get; set; }
             public class Condition
             {
@@ -52,7 +54,8 @@ namespace Weather
                 var Data = JsonConvert.DeserializeObject<WeatherData>(response.Content);
                 String ConditionFile;
 
-                //var icon = Data.current.weather_icons.text;
+                var icon = Data.current.weather_icons;
+                //url к картинке теперь доуступен тут: icon[0]
 
                 switch (Data.current.weather_code)
                 {

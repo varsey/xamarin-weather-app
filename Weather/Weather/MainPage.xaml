@@ -38,7 +38,7 @@
     <Label 
 		   x:Name="Temperature"
 		   Text=""
-		   FontSize="40"
+		   FontSize="20"
 		   Margin="0,-40,0,0"
 		   HorizontalOptions="Center"
 		   />
