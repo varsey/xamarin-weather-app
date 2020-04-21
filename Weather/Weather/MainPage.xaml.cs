@@ -77,7 +77,7 @@ namespace Weather
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
                     Condition.Source = ConditionFile;
-                    Temperature.Text = TempText;
+                    Temperature.Text = City.ToString() + " : " + TempText;
                     CityName.Text = "";
                     CityName.IsEnabled = true;
                 });

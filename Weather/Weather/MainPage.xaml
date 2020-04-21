@@ -33,12 +33,12 @@
 
     <Image
 		   x:Name="Condition"
-		   Source="cloudy.png"
+		   Source=""
 		   Scale="0.8"/>
     <Label 
 		   x:Name="Temperature"
-		   Text="+23"
-		   FontSize="80"
+		   Text=""
+		   FontSize="40"
 		   Margin="0,-40,0,0"
 		   HorizontalOptions="Center"
 		   />
