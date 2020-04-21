@@ -25,16 +25,6 @@ namespace Weather
             public string weather_code { get; set; }
             public List<string> weather_icons { get; set; }
             public List<string> weather_descriptions { get; set; }
-            public Condition condition { get; set; }
-            public class Condition
-            {
-                [JsonProperty("text")]
-                public string Text { get; set; }
-                [JsonProperty("icon")]
-                public string Icon { get; set; }
-                [JsonProperty("code")]
-                public int Code { get; set; }
-            }
         }
 
         public MainPage()
@@ -56,6 +46,7 @@ namespace Weather
 
                 var icon = Data.current.weather_icons;
                 //url к картинке теперь доуступен тут: icon[0]
+                var desc = Data.current.weather_descriptions;
 
                 switch (Data.current.weather_code)
                 {
@@ -80,7 +71,7 @@ namespace Weather
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
                     Condition.Source = ConditionFile;
-                    Temperature.Text = City.ToString() + " : " + TempText;
+                    Temperature.Text = City.ToString() + " : " + TempText + ", " + desc[0];
                     CityName.Text = "";
                     CityName.IsEnabled = true;
                 });
